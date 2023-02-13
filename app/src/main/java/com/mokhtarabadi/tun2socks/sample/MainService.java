@@ -21,6 +21,8 @@ import androidx.core.app.NotificationChannelCompat;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
+import com.londonx.tun2socks.Tun2Socks;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -57,7 +59,7 @@ public class MainService extends VpnService {
   public void onCreate() {
     super.onCreate();
 
-    MainNative.initialize(MainApp.appContext); // load native libraries...
+    Tun2Socks.initialize(MainApp.appContext); // load native libraries...
 
     createNotification();
 
@@ -230,8 +232,8 @@ public class MainService extends VpnService {
               isTun2SocksRunning = true;
 
               boolean result =
-                  MainNative.startTun2Socks(
-                      MainNative.LogLevel.INFO,
+                  Tun2Socks.startTun2Socks(
+                      Tun2Socks.LogLevel.INFO,
                       descriptor,
                       PRIVATE_MTU,
                       PreferenceHelper.getSocksServerAddress(),
@@ -257,7 +259,7 @@ public class MainService extends VpnService {
       stopNetworkConnectivityMonitor();
     }
 
-    MainNative.stopTun2Socks();
+    Tun2Socks.stopTun2Socks();
     try {
       tun2SocksThread.join();
       descriptor.close();

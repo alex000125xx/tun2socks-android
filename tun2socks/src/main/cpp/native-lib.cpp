@@ -67,7 +67,7 @@ int start_redirecting_stdout_stderr() {
 
 extern "C"
 JNIEXPORT jint JNICALL
-Java_com_mokhtarabadi_tun2socks_sample_MainNative_start_1tun2socks(JNIEnv *env, jclass clazz,
+Java_com_londonx_tun2socks_Tun2Socks_start_1tun2socks(JNIEnv *env, jclass clazz,
                                                                    jobjectArray args) {
     //argc
     jsize argument_count = env->GetArrayLength(args);
@@ -119,18 +119,18 @@ Java_com_mokhtarabadi_tun2socks_sample_MainNative_start_1tun2socks(JNIEnv *env, 
 
 extern "C"
 JNIEXPORT void JNICALL
-Java_com_mokhtarabadi_tun2socks_sample_MainNative_stopTun2Socks(JNIEnv *env, jclass clazz) {
+Java_com_londonx_tun2socks_Tun2Socks_stopTun2Socks(JNIEnv *env, jclass clazz) {
     tun2socks_terminate();
 }
 
 extern "C"
 JNIEXPORT void JNICALL
-Java_com_mokhtarabadi_tun2socks_sample_MainNative_printTun2SocksHelp(JNIEnv *env, jclass clazz) {
+Java_com_londonx_tun2socks_Tun2Socks_printTun2SocksHelp(JNIEnv *env, jclass clazz) {
     tun2socks_print_help("badvpn-tun2socks");
 }
 
 extern "C"
 JNIEXPORT void JNICALL
-Java_com_mokhtarabadi_tun2socks_sample_MainNative_printTun2SocksVersion(JNIEnv *env, jclass clazz) {
+Java_com_londonx_tun2socks_Tun2Socks_printTun2SocksVersion(JNIEnv *env, jclass clazz) {
     tun2socks_print_version();
 }
