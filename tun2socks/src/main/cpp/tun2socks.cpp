@@ -11,7 +11,7 @@ int pipe_stdout[2];
 int pipe_stderr[2];
 pthread_t thread_stdout;
 pthread_t thread_stderr;
-const char *ADBTAG = "native-lib";
+const char *ADBTAG = "tun2socks";
 
 void *thread_stderr_func(void *) {
     ssize_t redirect_size;
@@ -67,7 +67,7 @@ int start_redirecting_stdout_stderr() {
 
 extern "C"
 JNIEXPORT jint JNICALL
-Java_com_londonx_tun2socks_Tun2Socks_start_1tun2socks(JNIEnv *env, jclass clazz,
+Java_com_LondonX_tun2socks_Tun2Socks_start_1tun2socks(JNIEnv *env, jclass clazz,
                                                                    jobjectArray args) {
     //argc
     jsize argument_count = env->GetArrayLength(args);
@@ -119,18 +119,18 @@ Java_com_londonx_tun2socks_Tun2Socks_start_1tun2socks(JNIEnv *env, jclass clazz,
 
 extern "C"
 JNIEXPORT void JNICALL
-Java_com_londonx_tun2socks_Tun2Socks_stopTun2Socks(JNIEnv *env, jclass clazz) {
+Java_com_LondonX_tun2socks_Tun2Socks_stopTun2Socks(JNIEnv *env, jclass clazz) {
     tun2socks_terminate();
 }
 
 extern "C"
 JNIEXPORT void JNICALL
-Java_com_londonx_tun2socks_Tun2Socks_printTun2SocksHelp(JNIEnv *env, jclass clazz) {
+Java_com_LondonX_tun2socks_Tun2Socks_printTun2SocksHelp(JNIEnv *env, jclass clazz) {
     tun2socks_print_help("badvpn-tun2socks");
 }
 
 extern "C"
 JNIEXPORT void JNICALL
-Java_com_londonx_tun2socks_Tun2Socks_printTun2SocksVersion(JNIEnv *env, jclass clazz) {
+Java_com_LondonX_tun2socks_Tun2Socks_printTun2SocksVersion(JNIEnv *env, jclass clazz) {
     tun2socks_print_version();
 }

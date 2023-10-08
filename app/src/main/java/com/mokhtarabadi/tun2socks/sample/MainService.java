@@ -21,7 +21,7 @@ import androidx.core.app.NotificationChannelCompat;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
-import com.londonx.tun2socks.Tun2Socks;
+import com.LondonX.tun2socks.Tun2Socks;
 
 import java.io.BufferedReader;
 import java.io.IOException;

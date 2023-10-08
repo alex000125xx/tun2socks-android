@@ -1,4 +1,4 @@
-package com.londonx.tun2socks;
+package com.LondonX.tun2socks;
 
 import android.content.Context;
 import android.net.VpnService;
@@ -29,7 +29,7 @@ public class Tun2Socks {
             return;
         }
 
-        System.loadLibrary("native-lib");
+        System.loadLibrary("tun2socks");
         isInitialized = true;
     }
 
