@@ -1,0 +1,44 @@
+name: Build tun2socks AAR
+
+on:
+  push:
+    branches: [ "main" ]      # يبني مع كل دفعة
+  workflow_dispatch:          # أو تشغيل يدوي من تبويب Actions
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    # 1) جلب الكود
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    # 2) إعداد JDK + Gradle
+    - name: Set up JDK
+      uses: actions/setup-java@v4
+      with:
+        distribution: "temurin"
+        java-version: "17"
+
+    - name: Set up Gradle cache
+      uses: gradle/gradle-build-action@v2  # يُسرّع البناء :contentReference[oaicite:0]{index=0}
+
+    # 3) تنفيذ التجميع
+    - name: Build AAR
+      run: ./gradlew tun2socks:assembleRelease
+
+    # 4) رفع الملفات كـ Artifact
+    - name: Upload AAR
+      uses: actions/upload-artifact@v4     # الإصدار الجديد :contentReference[oaicite:1]{index=1}
+      with:
+        name: tun2socks-AAR
+        path: tun2socks/build/outputs/aar/tun2socks-release.aar
+
+    # (اختياري) رفع المكتبات الأصلية .so
+    - name: Upload native .so
+      uses: actions/upload-artifact@v4
+      with:
+        name: native-libs
+        path: |
+          tun2socks/build/intermediates/stripped_native_libs/release/out/lib/**/*.so
